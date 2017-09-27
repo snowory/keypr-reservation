@@ -1,0 +1,13 @@
+[
+  {
+    "pk": 1,
+    "model": "reservation.Reservation",
+    "fields": {
+      "start_date": "2017-09-25",
+      "end_date": "2017-09-27",
+      "room_number": 1,
+      "first_name": "John",
+      "last_name": "Doe"
+    }
+  }
+]
