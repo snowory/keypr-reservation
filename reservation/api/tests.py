@@ -47,6 +47,26 @@ class TestIsOverlap(TestCase):
         self.assertTrue(is_overlap(start_date1, start_date2,
                                    end_date1, end_date2))
 
+    def test_given_end_date_equals_another_booking_start_date_returns_False(self):
+        start_date1 = datetime.strptime('2017-09-26', '%Y-%m-%d').date()
+        end_date1 = datetime.strptime('2017-09-27', '%Y-%m-%d').date()
+
+        start_date2 = datetime.strptime('2017-09-27', '%Y-%m-%d').date()
+        end_date2 = datetime.strptime('2017-09-28', '%Y-%m-%d').date()
+
+        self.assertFalse(is_overlap(start_date1, start_date2,
+                                    end_date1, end_date2))
+
+    def test_given_distant_dates_returns_False(self):
+        start_date1 = datetime.strptime('2017-01-26', '%Y-%m-%d').date()
+        end_date1 = datetime.strptime('2017-01-27', '%Y-%m-%d').date()
+
+        start_date2 = datetime.strptime('2017-09-27', '%Y-%m-%d').date()
+        end_date2 = datetime.strptime('2017-09-28', '%Y-%m-%d').date()
+
+        self.assertFalse(is_overlap(start_date1, start_date2,
+                                    end_date1, end_date2))
+
 
 class TestAPI(APITestCase):
     fixtures = ['test_reservations.json', 'test_users.json']

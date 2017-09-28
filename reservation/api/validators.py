@@ -11,7 +11,7 @@ def is_overlap(start1, start2, end1, end2):
         - second range ends within the first range
         - second range contains the first range
     """
-    return (start1 <= start2 <= end1 or
+    return (start1 <= start2 < end1 or
             start1 <= end2 <= end1 or
             start2 <= start1 and end2 >= end1)
 
