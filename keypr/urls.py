@@ -13,9 +13,13 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
+from django.conf.urls import include
+from django.conf.urls import url
 from django.contrib import admin
 from django.views.generic import RedirectView
+from rest_framework_swagger.views import get_swagger_view
+
+docs_view = get_swagger_view(title='KEYPR Reservation API')
 
 urlpatterns = [
     url(r'^$', RedirectView.as_view(url='api-auth/login/')),
@@ -25,5 +29,8 @@ urlpatterns = [
 
     url(r'^api/', include('reservation.api.urls')),
 
+    url(r'^api/docs/$', docs_view),
+
     url(r'^admin/', admin.site.urls),
+
 ]
